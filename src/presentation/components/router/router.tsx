@@ -1,5 +1,4 @@
 import React from 'react'
-import '@/presentation/styles/global.scss'
 import { Login } from '@/presentation/pages'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
