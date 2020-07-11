@@ -59,28 +59,11 @@ button {
       text-transform: uppercase;
     }
 
-    .inputWrap {
-      margin-top: 16px;
-      display: flex;
-      position: relative;
-      align-items: center;
-      input {
-        flex-grow: 1;
-      }
-
-      .status {
-        position: absolute;
-        right: 8px;
-        font-size: 12px;
-        cursor: help;
-      }
-    }
-
     .submit{
       margin-top: 32px;
       text-transform: uppercase;
     }
-
+    
     .link{
       color: $primary;
       margin-top: 16px;
@@ -91,7 +74,6 @@ button {
         text-decoration: underline;
       }
     }
-
     .errorWrap {
       display: flex;
       flex-direction: column;
