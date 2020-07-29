@@ -32,7 +32,16 @@ button {
   border: none;
   border-radius: 8px;
   line-height: 60px;
+  text-transform: uppercase;
   &:hover{
     opacity: 0.9;
+  }
+  &:disabled{
+    background-color: $disabled-background;
+    color: $disabled-color;
+    
+    &:hover{
+      opacity: 1;
+    }
   }
 }

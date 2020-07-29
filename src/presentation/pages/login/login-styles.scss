@@ -23,18 +23,10 @@
       text-transform: uppercase;
     }
 
-    .submit{
+    button{
       margin-top: 32px;
-      text-transform: uppercase;
-      &:disabled{
-        background-color: $disabled-background;
-        color: $disabled-color;
-        
-        &:hover{
-          opacity: 1;
-        }
-      }
     }
+
 
     .link{
       color: $primary;
