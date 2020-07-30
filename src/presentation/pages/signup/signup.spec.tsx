@@ -44,7 +44,7 @@ const simulateValidSubmit = async (sut: RenderResult, name = faker.name.findName
   Helper.populateField(sut, 'name', name)
   Helper.populateField(sut, 'email', email)
   Helper.populateField(sut, 'password', password)
-  Helper.populateField(sut, 'passwordConfirmation', password)
+  Helper.populateField(sut, 'confirmation', password)
   const form = sut.getByTestId('form')
   fireEvent.submit(form)
   await waitFor(() => form)
@@ -61,7 +61,7 @@ describe('SingUp Component', () => {
     Helper.testStatusForField(sut, 'name', validationError)
     Helper.testStatusForField(sut, 'email', validationError)
     Helper.testStatusForField(sut, 'password', validationError)
-    Helper.testStatusForField(sut, 'passwordConfirmation', validationError)
+    Helper.testStatusForField(sut, 'confirmation', validationError)
   })
 
   test('Should show name error if Validation fails', () => {
@@ -85,11 +85,11 @@ describe('SingUp Component', () => {
     Helper.testStatusForField(sut, 'password', validationError)
   })
 
-  test('Should show passwordConfirmation error if Validation fails', () => {
+  test('Should show confirmation error if Validation fails', () => {
     const validationError = faker.random.words()
     const { sut } = makeSut({ validationError })
-    Helper.populateField(sut, 'passwordConfirmation')
-    Helper.testStatusForField(sut, 'passwordConfirmation', validationError)
+    Helper.populateField(sut, 'confirmation')
+    Helper.testStatusForField(sut, 'confirmation', validationError)
   })
 
   test('Should show valid name state if Validation succeds', () => {
@@ -110,10 +110,10 @@ describe('SingUp Component', () => {
     Helper.testStatusForField(sut, 'password')
   })
 
-  test('Should show valid passwordConfirmation state if Validation succeds', () => {
+  test('Should show valid confirmation state if Validation succeds', () => {
     const { sut } = makeSut()
-    Helper.populateField(sut, 'passwordConfirmation')
-    Helper.testStatusForField(sut, 'passwordConfirmation')
+    Helper.populateField(sut, 'confirmation')
+    Helper.testStatusForField(sut, 'confirmation')
   })
 
   test('Should enable submit button if form is valid', () => {
@@ -121,7 +121,7 @@ describe('SingUp Component', () => {
     Helper.populateField(sut, 'name')
     Helper.populateField(sut, 'email')
     Helper.populateField(sut, 'password')
-    Helper.populateField(sut, 'passwordConfirmation')
+    Helper.populateField(sut, 'confirmation')
     Helper.testButtonIsDisabled(sut, 'submit', false)
   })
 
@@ -141,7 +141,7 @@ describe('SingUp Component', () => {
       email,
       name,
       password,
-      passwordConfirmation: password
+      confirmation: password
     })
   })
 

@@ -15,7 +15,7 @@ describe('EmailValidation', () => {
   test('Should return falsy if email is valid', () => {
     const field = faker.database.column()
     const sut = makeSut()
-    const error = sut.validate(field)
+    const error = sut.validate({ [field]: faker.internet.email() })
     expect(error).toBeFalsy()
   })
 

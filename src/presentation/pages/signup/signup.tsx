@@ -21,28 +21,28 @@ const Signup: React.FC<Props> = ({ validation, addAccount, saveAccessToken }: Pr
     name: '',
     email: '',
     password: '',
-    passwordConfirmation: '',
+    confirmation: '',
     emailError: '',
     nameError: '',
     passwordError: '',
-    passwordConfirmationError: ''
+    confirmationError: ''
   })
   useEffect(() => {
-    const { name, email, password, passwordConfirmation } = state
-    const formData = { name, email, password, passwordConfirmation }
+    const { name, email, password, confirmation } = state
+    const formData = { name, email, password, confirmation }
     const emailError = validation.validate('email', formData)
     const nameError = validation.validate('name', formData)
     const passwordError = validation.validate('password', formData)
-    const passwordConfirmationError = validation.validate('passwordConfirmationError', formData)
+    const confirmationError = validation.validate('confirmation', formData)
     setState({
       ...state,
       emailError,
       nameError,
       passwordError,
-      passwordConfirmationError,
-      isFormInvalid: !!nameError || !!emailError || !!passwordError || !!passwordConfirmationError
+      confirmationError,
+      isFormInvalid: !!nameError || !!emailError || !!passwordError || !!confirmationError
     })
-  }, [state.name])
+  }, [state.name, state.email, state.password, state.confirmation])
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault()
@@ -56,7 +56,7 @@ const Signup: React.FC<Props> = ({ validation, addAccount, saveAccessToken }: Pr
         name: state.name,
         email: state.email,
         password: state.password,
-        passwordConfirmation: state.passwordConfirmation
+        confirmation: state.confirmation
       })
       await saveAccessToken.save(account.accessToken)
       history.replace('/')
@@ -78,7 +78,7 @@ const Signup: React.FC<Props> = ({ validation, addAccount, saveAccessToken }: Pr
           <Input type="text" name="name" placeholder="Digite seu nome" />
           <Input type="email" name="email" placeholder="Digite seu e-mail" />
           <Input type="password" name="password" placeholder="Digite sua senha" />
-          <Input type="password" name="passwordConfirmation" placeholder="Repita sua senha" />
+          <Input type="password" name="confirmation" placeholder="Repita sua senha" />
           <SubmitButton text='Cadastrar' />
           <Link replace to='/login' data-testid='login-link' className={Styles.link}>Voltar Para Login</Link>
           <FormStatus />
